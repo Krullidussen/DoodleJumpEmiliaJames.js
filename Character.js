@@ -10,6 +10,19 @@ class Player {
     this.width = 64;
     this.height = this.width * (sprite.height / sprite.width);
   }
+  move() {
+  const speed = 5;
+
+  if (keyIsDown(LEFT_ARROW)) {
+    this.x -= speed;
+  }
+
+  if (keyIsDown(RIGHT_ARROW)) {
+    this.x += speed;
+  }
+
+  this.x = constrain(this.x, 0, width - this.width);
+}
   show() {
     image(this.sprite, this.x, this.y, this.width, this.height);
   }
@@ -26,5 +39,6 @@ function setup() {
 
 function draw() {
   background(225, 240, 255);
+  player.move();
   player.show();
 }
